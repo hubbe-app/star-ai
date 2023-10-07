@@ -22,16 +22,13 @@ export default function RecordingView(){
 
         recognitionRef.current.onresult = (event:any) => {
             const { transcript } = event.results[event.results.length - 1][0]
-            console.log(event.results)
             setTranscript(transcript)
         }
 
         recognitionRef.current.onerror = (event:any) =>{
-            console.log(event)
+            console.log(`Error: ${event}`)
         }
 
-        console.log('started')
-        console.log(recognitionRef.current)
         recognitionRef.current.start()
     }
 
@@ -48,7 +45,6 @@ export default function RecordingView(){
             recognitionRef.current.stop()
             setRecordingComplete(true)
         }
-        setIsRecording(false)
     }
 
     const handleToggleRecording = () => {
