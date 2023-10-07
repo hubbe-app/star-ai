@@ -57,7 +57,7 @@ export default function RecordingView(){
     }
 
     return <div className="flex items-center justify-center h-screen w-full">
-        {/* Transcript */}
+        
         <div className='w-full'>
             {(isRecording || transcript) && (
                 <div className='w-1/4 m-auto rounded-md border p-4 bg-white'>
@@ -83,7 +83,7 @@ export default function RecordingView(){
                 )}    
                 </div>
             )}
-            {/* Buttons */}
+            
             <div className='flex items-center w-full'>
             {isRecording ? (
                 <button onClick={handleToggleRecording}
