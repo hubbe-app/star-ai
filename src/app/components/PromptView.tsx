@@ -64,23 +64,18 @@ export default function PromptView(props: PromptViewProps) {
         }
     }
 
-    const [call, setCall] = useState<boolean>(false);
-
     useEffect(() => {
-        if (!call) {
-            setCall(true)
-            const handleKeyPress = (e: KeyboardEvent) => {
-                if (e.key === 'Enter') {
-                    props.onEnter(inputValue);
-                }
-            };
+        const handleKeyPress = (e: KeyboardEvent) => {
+            if (e.key === 'Enter') {
+                props.onEnter(inputValue);
+            }
+        };
 
-            window.addEventListener('keydown', handleKeyPress);
+        window.addEventListener('keydown', handleKeyPress);
 
-            return () => {
-                window.removeEventListener('keydown', handleKeyPress);
-            };
-        }
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
     }, [inputValue, props.onEnter]);
 
 

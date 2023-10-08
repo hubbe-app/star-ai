@@ -1,4 +1,3 @@
-import { Questrial } from "next/font/google";
 import { getEnviromentVariable } from "../helpers/enviroment";
 
 const BASE_URL = `https://api.star-ai.app`;
@@ -9,19 +8,24 @@ export interface BrainQuery {
   Sources: string[][]
 }
 
-export async function getBrainQuery(query: string): Promise<BrainQuery> {
+export async function getBrainQuery(query: string): Promise<any> {
   const form = new FormData();
   form.append("user_prompt", query);
   const options = {
     method: "POST",
     body: form,
-    timeout: 50000
+    timeout: 150000
   };
   console.log(`${BASE_URL}/api/prompt_route`)
+
   const response = await fetch(`${BASE_URL}/api/prompt_route`, options);
+
   const data = await response.json();
+
   console.log(data);
   return data;
+
+  // return {};
   // if (query.toLowerCase() == 'what are the initial requirements for the selection'){
   //   const brainQuery: BrainQuery = {
   //     Answer: 'The initial requirements for the selection of astronauts include medical screening, testing, and certification as outlined in the NASA Crewmember Medical Standards, Volume I and JSC 27384, Procedure Manual for the NASA Psychological Services Group. These standards are maintained and updated on a periodic basis through formal review involving the JSC Aerospace Medical Board (AMB) and NASA Medical Policy Board (MPB).',

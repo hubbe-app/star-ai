@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { BrainQuery, getBrainQuery } from '@/services/BrainService'
 import LoadingStarField from './LoadingStarField'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,7 +11,10 @@ interface ResponseViewProps{
 }
 
 export default function ResponseView(props: ResponseViewProps){
-    const [result, setResult] = useState<BrainQuery | undefined>(undefined)
+  
+    
+    const [result, setResult] = useState<BrainQuery | undefined>(undefined);
+
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [currentPostion, setCurrentPosition] = useState<number>(-1)
     const [isRecording, setIsRecording] = useState<boolean>(false)
@@ -76,29 +79,6 @@ export default function ResponseView(props: ResponseViewProps){
         }
     }
 
-    useEffect(() => {
-
-        console.log('Entrou')
-        async function fetchBrainQuery() {
-          try {
-            setIsLoading(true)
-            // setTimeout(async () => {
-            //     const brainResult = await getBrainQuery(props.prompt);
-            //     setResult(brainResult);
-            //     setIsLoading(false)
-            // }, 3000);
-            const brainResult = await getBrainQuery(props.prompt)
-            setResult(brainResult)
-            setIsLoading(false)
-          } catch (error) {
-            console.error('Erro fetching data:', error);
-          }
-        }
-    
-        fetchBrainQuery();
-      }, []);
-
-
     const handleBackClick = () => {
         props.onBackClick()
     }
@@ -114,6 +94,38 @@ export default function ResponseView(props: ResponseViewProps){
             setCurrentPosition(currentPostion - 1);
         }
     }
+    
+
+    // useEffect(() => {
+    //   const awaitFullResult = async () => {
+    //     try {
+    //       const newResult = await resultAwait;
+    //       console.log(newResult);
+          
+    //     } catch (error) {
+    //       console.log(error);
+    //       setIsLoading(false);
+    //     }
+    //   }
+
+    //   setIsLoading(true);
+
+    //   awaitFullResult();
+
+    // }, [])
+
+    const getData = async () => {
+      try {
+        setIsLoading(true);
+        const newResult = await getBrainQuery(props.prompt)
+        setResult(newResult); 
+        setIsLoading(false);  
+      } catch (error) {
+        setIsLoading(false);
+      }
+    }
+
+    const [resultAwait] = useState<any>(() => getData())
 
     return <div className='flex flex-col pe-[50px] ps-[50px] justify-center h-screen w-full relative'>
         <form>
