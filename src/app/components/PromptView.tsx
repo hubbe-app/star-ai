@@ -110,11 +110,11 @@ export default function PromptView(props: PromptViewProps) {
                 }
             </button>
         </div>
-        <Image src='/nasa-logo.png'
+        {/* <Image src='/nasa-logo.png'
             alt='Nasa Logo'
             width={334}
             height={93}
-            draggable='false' />
+            draggable='false' /> */}
         <Image src='/hubbe-logo-gradient.png'
             alt='Hubbe Logo Gradient'
             className='absolute bottom-0 right-0 z-0'

@@ -94,25 +94,6 @@ export default function ResponseView(props: ResponseViewProps){
             setCurrentPosition(currentPostion - 1);
         }
     }
-    
-
-    // useEffect(() => {
-    //   const awaitFullResult = async () => {
-    //     try {
-    //       const newResult = await resultAwait;
-    //       console.log(newResult);
-          
-    //     } catch (error) {
-    //       console.log(error);
-    //       setIsLoading(false);
-    //     }
-    //   }
-
-    //   setIsLoading(true);
-
-    //   awaitFullResult();
-
-    // }, [])
 
     const getData = async () => {
       try {
@@ -202,12 +183,12 @@ export default function ResponseView(props: ResponseViewProps){
                     <FontAwesomeIcon icon={faChevronRight} size='2x' color='#AE61ED'/>
                 </button>
             </div>
-            <Image src='/nasa-logo.png'
+            {/* <Image src='/nasa-logo.png'
                 alt='Nasa Logo'
                 width={131}
                 height={38}
                 draggable='false'
-                className='h-[38px]'/>
+                className='h-[38px]'/> */}
         </div>
     </div>
 }
