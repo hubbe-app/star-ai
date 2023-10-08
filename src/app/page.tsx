@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import PromptView from './components/PromptView'
 import ResponseView from './components/ResponseView';
+import NameView from './components/NameView';
 
 export default function Home() {
   const [prompt, setPrompt] = useState<string>('');
@@ -13,11 +14,12 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-[#010101]">
-      { prompt ? (
+      <NameView></NameView>
+      {/* { prompt ? (
         <ResponseView prompt={prompt}/>
       ) : (
         <PromptView username='Vitor' onEnter={handlePromptEnter}/>
-      )}
+      )} */}
     </main>
   )
 }
