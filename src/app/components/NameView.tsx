@@ -29,6 +29,5 @@ export default function NameView(props: NameViewProps){
                 className="self-center bg-gradient-to-r from-[#5BF677] to-[#AE61ED] px-[60px] py-[10px] hover:bg-none hover:bg-[#D980FA] focus:outline-none text-white font-medium rounded-lg text-sm">Enter</button>   
         </form> 
         <Image className="self-center py-20" src='/nasa-logo.png' width={334} height={93} alt='Nasa Logo'></Image>
-
     </div>
 }

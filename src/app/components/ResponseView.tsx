@@ -14,7 +14,7 @@ export default function ResponseView(props: ResponseViewProps){
         async function fetchBrainQuery() {
           try {
             const brainResult = await getBrainQuery(props.prompt);
-            setResult(brainResult.result);
+            setResult(brainResult.Answer);
           } catch (error) {
             console.error('Erro fetching data:', error);
           }
